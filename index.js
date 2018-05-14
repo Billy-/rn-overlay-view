@@ -111,7 +111,6 @@ class OverlayView extends React.Component {
       const { snap, snapThreshold, openAmount } = this.props
       const overScroll = vy * 175
       const newScrollY = this.clampY(this.scrollY + dy + overScroll)
-      console.log(this.scrollY)
 
       const snapped = this.snapY(newScrollY)
 
