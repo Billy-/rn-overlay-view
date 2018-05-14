@@ -141,7 +141,7 @@ class OverlayView extends React.Component {
   })
 
   render () {
-    const { open, props, state } = this
+    const { props, state } = this
     const { children } = props
     const { y } = state
     const stateStyles = {
@@ -153,7 +153,7 @@ class OverlayView extends React.Component {
         onLayout={this.onLayout}
         {...this.panResponder.panHandlers}
       >
-        {React.Children.map(children, child => React.cloneElement(child, { open, y }))}
+        {children}
       </Animated.View>
     )
   }
