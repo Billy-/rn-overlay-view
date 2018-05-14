@@ -38,11 +38,23 @@ class OverlayView extends React.Component {
   snapY (y) {
     const { snapThreshold, openAmount } = this.props
     const wasOpen = this.scrollY <= -openAmount
-    const couldSnapOpen = (!wasOpen && y < this.getPeekAmount() - snapThreshold) // Was closed & threshold breached
-      || (wasOpen && y > -openAmount && y < -openAmount + snapThreshold) // Was open but didn't breach threshold
-    const couldSnapClosed = (wasOpen && y > -openAmount + snapThreshold) // Was open & threshold breached
-      || (!wasOpen && y > this.getPeekAmount() - snapThreshold) // Was closed but didn't breach threshold
-    
+    const couldSnapOpen = (
+      !wasOpen // Was closed,
+      && y < this.getPeekAmount() - snapThreshold // Threshold breached
+      && y > -openAmount // Target y is not fully open
+    ) || (
+      wasOpen // Was open,
+      && y > -openAmount // Isn't still fully open
+      && y < -openAmount + snapThreshold // Threshold not breached
+    )
+    const couldSnapClosed = (
+      wasOpen // Was open
+      && y > -openAmount + snapThreshold // Threshold breached
+    ) || (
+      !wasOpen // Was closed
+      && y > this.getPeekAmount() - snapThreshold // Didn't breach threshold
+    )
+
     if (couldSnapOpen) {
       return -openAmount
     } else if (couldSnapClosed) {
@@ -108,14 +120,12 @@ class OverlayView extends React.Component {
     },
     onPanResponderRelease: (_, gesture) => {
       const { dy, vy } = gesture
-      const { snap, snapThreshold, openAmount } = this.props
+      const { snap } = this.props
       const overScroll = vy * 175
       const newScrollY = this.clampY(this.scrollY + dy + overScroll)
 
-      const snapped = this.snapY(newScrollY)
-
-      if (snapped !== newScrollY) {
-        this.springTo(snapped)
+      if (snap) {
+        this.springTo(this.snapY(newScrollY))
       } else {
         this.easeTo(newScrollY)
       }
