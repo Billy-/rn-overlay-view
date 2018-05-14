@@ -4,6 +4,10 @@
   "description": "Overlay View for React Native",
   "main": "index.js",
   "author": "Billy M <billy@billym.co.uk>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Billy-/rn-overlay-view"
+  },
   "license": "MIT",
   "private": false,
   "scripts": {
