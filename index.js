@@ -56,7 +56,7 @@ class OverlayView extends React.Component {
     )
 
     if (couldSnapOpen) {
-      return -openAmount
+      return this.clampY(-openAmount)
     } else if (couldSnapClosed) {
       return this.getPeekAmount()
     }
@@ -91,7 +91,7 @@ class OverlayView extends React.Component {
 
   open (springBack) {
     if (springBack || this.scrollY > -this.props.openAmount) {
-      this.springTo(-this.props.openAmount)
+      this.springTo(this.clampY(-this.props.openAmount))
     }
   }
 
