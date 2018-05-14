@@ -32,8 +32,6 @@ const Overlay = ({ open, y }) => (
   <View>
     <Animated.View
       style={{
-        position: 'absolute',
-        top: 0,
         opacity: y.interpolate({
           inputRange: [-300, -150],
           outputRange: [0, 1],
