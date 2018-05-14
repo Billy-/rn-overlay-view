@@ -115,7 +115,15 @@ class OverlayView extends React.Component {
     onMoveShouldSetPanResponderCapture: () => false,
     onPanResponderMove: (_, gestureState) => {
       const { dy } = gestureState
-      const newY = this.scrollY + dy
+      let newY = this.scrollY + dy
+      const clamped = this.clampY(newY)
+
+      if (newY !== clamped) {
+        const pastBounds = newY - clamped
+        // Drag past bounds at half speed
+        newY = clamped + (pastBounds / 2)
+      }
+
       this.setY(newY)
     },
     onPanResponderRelease: (_, gesture) => {
