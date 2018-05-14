@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/bill/projects/rn-overlay-view/example/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/bill/projects/rn-overlay-view/example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/app/example/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/app/example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/app/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/app/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    }
+]

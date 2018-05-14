@@ -1,0 +1,15 @@
+version: '3'
+services:
+  react-native:
+    image: 'react-native'
+    build: ./
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ../:/app
+    privileged: true
+
+    ports:
+      - "8081:8081"
+      - "5037:5037"
+    working_dir: /app/example
+    command: 'yarn dev'

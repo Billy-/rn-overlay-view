@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/app/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/app/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.54.0/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/app/example/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/app/example/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.54.0/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/home/bill/projects/rn-overlay-view/example/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/home/bill/projects/rn-overlay-view/example/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/res/xml/preferences.xml"
+    }
+]

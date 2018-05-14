@@ -1,0 +1,22 @@
+{
+  "name": "rn-overlay-view",
+  "version": "1.0.0",
+  "description": "Overlay View for React Native",
+  "main": "index.js",
+  "author": "Billy M <billy@billym.co.uk>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "docker-compose -f docker/docker-compose.yml -p rn-overlay-view up",
+    "devmenu": "docker exec rn-overlay-view_react-native_1 /bin/bash -c \"adb shell input keyevent 82\""
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.10",
+    "react": "^16.3.2"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lodash": "^4.17.10",
+    "react": "^16.3.2"
+  }
+}
