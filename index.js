@@ -21,6 +21,13 @@ class OverlayView extends React.Component {
   scrollY = 0
   height = -1
 
+  componentDidMount () {
+    this.props.onMount && this.props.onMount({
+      open: this.open,
+      y: this.state.y,
+    })
+  }
+
   getPeekAmount () {
     return this.height < this.props.peekAmount
       ? -this.height

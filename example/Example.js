@@ -4,16 +4,24 @@ import { Animated, Text, TouchableHighlight, View, ScrollView } from 'react-nati
 
 import OverlayView from '../'
 
-const Example = () => (
-  <View
-    style={{ height: '100%', width:'100%' }}
-  >
-    <Background />
-    <OverlayView>
-      <Overlay />
-    </OverlayView>
-  </View>
-)
+class Example extends React.Component {
+  state = {
+    open: null,
+    y: null,
+  }
+  render () {
+    return (
+      <View
+        style={{ height: '100%', width:'100%' }}
+      >
+        <Background />
+        <OverlayView onMount={({ open, y }) => this.setState({ open, y })} >
+          <Overlay open={this.state.open} y={this.state.y} />
+        </OverlayView>
+      </View>
+    )
+  }
+}
 
 export default Example
 
@@ -32,11 +40,13 @@ const Overlay = ({ open, y }) => (
   <View>
     <Animated.View
       style={{
-        opacity: y.interpolate({
-          inputRange: [-300, -150],
-          outputRange: [0, 1],
-          extrapolate: 'clamp',
-        })
+        opacity: y ?
+          y.interpolate({
+            inputRange: [-300, -150],
+            outputRange: [0, 1],
+            extrapolate: 'clamp',
+          })
+          : 1
       }}
     >
       <TouchableHighlight
@@ -57,16 +67,20 @@ const Overlay = ({ open, y }) => (
         flex: 1,
         backgroundColor:'#fff',
         paddingVertical: 25,
-        marginHorizontal: y.interpolate({
-          inputRange: [-300, -150],
-          outputRange: [0, 10],
-          extrapolate: 'clamp',
-        }),
-        paddingHorizontal: y.interpolate({
-          inputRange: [-300, -150],
-          outputRange: [25, 15],
-          extrapolate: 'clamp',
-        }),
+        marginHorizontal: y ?
+          y.interpolate({
+            inputRange: [-300, -150],
+            outputRange: [0, 10],
+            extrapolate: 'clamp',
+          })
+          : 10,
+        paddingHorizontal: y ?
+          y.interpolate({
+            inputRange: [-300, -150],
+            outputRange: [25, 15],
+            extrapolate: 'clamp',
+          })
+          : 15,
       }}
     >
       <Text>Wassup</Text>
