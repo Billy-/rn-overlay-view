@@ -118,8 +118,7 @@ class OverlayView extends React.Component {
   }
 
   panResponder = PanResponder.create({
-    onMoveShouldSetPanResponder: (_, gestureState) => true,
-    onMoveShouldSetPanResponderCapture: () => false,
+    onMoveShouldSetPanResponder: (_, { dy }) => Math.abs(dy) > 5,
     onPanResponderMove: (_, gestureState) => {
       const { dy } = gestureState
       let newY = this.scrollY + dy
