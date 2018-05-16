@@ -1,6 +1,6 @@
 {
   "name": "rn-overlay-view",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Overlay View for React Native",
   "main": "index.js",
   "author": "Billy M <billy@billym.co.uk>",
