@@ -75,16 +75,19 @@ class OverlayView extends React.Component {
   }
 
   springTo (y) {
+    const { useNativeDriver } = this.props
     this.scrollY = y
     Animated.spring(
       this.state.y,
       {
         toValue: y,
+        useNativeDriver,
       },
     ).start()
   }
 
   easeTo (y) {
+    const { useNativeDriver } = this.props
     this.scrollY = y
     Animated.timing(
       this.state.y,
@@ -92,6 +95,7 @@ class OverlayView extends React.Component {
         toValue: y,
         duration: 250,
         easing: Easing.out(Easing.ease),
+        useNativeDriver,
       },
     ).start()
   }
@@ -172,6 +176,7 @@ OverlayView.propTypes = {
   snap: bool,
   snapThreshold: number,
   onScroll: func,
+  useNativeDriver: bool,
 }
 
 OverlayView.defaultProps = {
@@ -181,6 +186,7 @@ OverlayView.defaultProps = {
   snap: true,  
   snapThreshold: 100,
   onScroll: undefined,
+  useNativeDriver: false,
 }
 
 export default OverlayView
